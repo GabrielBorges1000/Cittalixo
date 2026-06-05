@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CittaLixo</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        #map {
+            height: 500px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin: 10px auto;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>♻️ CittaLixo</h1>
+
+    <div id="map"></div>
+
+    <div class="card">
+        <h3>Ecoponto Centro</h3>
+        <p>Recicláveis</p>
+        <p>Rua do Sol, 100</p>
+    </div>
+
+    <div class="card">
+        <h3>Ecoponto Bairro Novo</h3>
+        <p>Recicláveis</p>
+        <p>Rua das Flores, 200</p>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        var map = L.map('map').setView([-8.05428, -34.8813], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap'
+        }).addTo(map);
+
+        L.marker([-8.05428, -34.8813])
+            .addTo(map)
+            .bindPopup('<b>Ecoponto Centro</b><br>Rua do Sol, 100');
+
+        L.marker([-8.0500, -34.8800])
+            .addTo(map)
+            .bindPopup('<b>Ecoponto Bairro Novo</b><br>Rua das Flores, 200');
+
+        setTimeout(function () {
+            map.invalidateSize();
+        }, 200);
+    </script>
+
+</body>
+</html>
